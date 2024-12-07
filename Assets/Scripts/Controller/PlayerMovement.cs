@@ -37,17 +37,11 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingDuration = 0.4f;
     private Vector2 wallJumpingPower = new Vector2(16f, 8f);
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+  
     // Update is called once per frame
     void Update()
     {
         JumpReset();
-        wallJump();
 
         if (!isWallJumping)
         {
@@ -55,12 +49,11 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-
     }
 
     private void JumpReset()
     {
-        if (isGrounded()) extraJumps = 1;
+        if (isGrounded() || isWalled()) extraJumps = 1;
     }
 
     private void FixedUpdate()
@@ -92,24 +85,9 @@ public class PlayerMovement : MonoBehaviour
            
         }
 
-        if (wallJumpingCounter > 0)
-        {
-            isWallJumping = true;
-            rb2D.velocity = new Vector2 (wallJumpingDirection * wallJumpingPower.x,wallJumpingPower.y);
-            wallJumpingCounter = 0f;
+        
 
-            if (transform.localScale.x != wallJumpingDuration)
-            {
-                isFacingRight = !isFacingRight;
-                Vector3 localScale = transform.localScale;
-                localScale.x *= -1f;
-                transform.localScale = localScale;
-
-            }
-
-            Invoke(nameof(stopWallJumping), wallJumpingDirection);
-
-        }
+        
 
     }
 
@@ -131,27 +109,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         else isWallSliding = false;
-    }
-
-    private void wallJump()
-    {
-        if (isWallSliding) { 
-            isWallJumping = false;
-            wallJumpingDirection = -transform.localScale.x;
-            wallJumpingCounter = wallJumpingTime;
-
-            CancelInvoke(nameof(stopWallJumping));
-        }
-
-        else
-        {
-            wallJumpingCounter -= Time.deltaTime;
-        }
-    }
-
-    private void stopWallJumping()
-    {
-        isWallJumping = false;
     }
 
     private void Flip()
