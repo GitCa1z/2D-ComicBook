@@ -15,27 +15,21 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField] public LayerMask wallMask;
 
     private float horizontal;
-    private float speed = 8f;
-    private float jumpPower = 8f;
+    [SerializeField]private float speed = 8f;
+    [SerializeField]private float jumpPower = 8f;
     private bool isFacingRight = true;
     [SerializeField ]private int extraJumps = 1;
-
-
 
     private bool canDash = true;
     private bool isDashing;
     private bool isWallSliding;
     private bool isWallJumping;
 
-    private float wallSlidingSpeed = 2f;
+    private float wallSlidingSpeed = 0.1f;
     private float dashPower = 24f;
     private float dashingTime = 0.2f;
     private float dashingCoolDown = 1f;
-    private float wallJumpingDirection;
-    private float wallJumpingTime = 0.2f;
-    private float wallJumpingCounter;
-    private float wallJumpingDuration = 0.4f;
-    private Vector2 wallJumpingPower = new Vector2(16f, 8f);
+
 
   
     // Update is called once per frame
@@ -84,11 +78,6 @@ public class PlayerMovement : MonoBehaviour
             extraJumps--;
            
         }
-
-        
-
-        
-
     }
 
     public bool isGrounded()
