@@ -8,7 +8,7 @@ public class Buttons : MonoBehaviour
     public void StartGame()
     {
         // Replace "GameScene" with the name of your game scene
-        SceneManager.LoadScene("Level_1");
+        SceneManager.LoadScene(0);
     }
 
     public void OpenOptions()

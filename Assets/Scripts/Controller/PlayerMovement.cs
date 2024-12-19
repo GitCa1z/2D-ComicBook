@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,18 +30,18 @@ public class PlayerMovement : MonoBehaviour
     private float dashPower = 24f;
     private float dashingTime = 0.2f;
     private float dashingCoolDown = 1f;
+    
 
-
-  
     // Update is called once per frame
     void Update()
     {
         JumpReset();
 
+
         if (!isWallJumping)
         {
             Flip();
-
+            
         }
 
     }

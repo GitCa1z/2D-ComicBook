@@ -130,7 +130,7 @@ public class Barrier : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(collision.gameObject);
-            SceneManager.LoadScene("Level_1");
+            SceneManager.LoadScene(0);
         }
     }
 }
